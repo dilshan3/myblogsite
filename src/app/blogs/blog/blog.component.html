@@ -1,0 +1,20 @@
+<div class="blog-card" ng-app='app'>
+    <h5 class="blog-title">
+      {{ blog.title }}
+    </h5>
+    <span> {{ blog.date | date}} </span>
+    <div class="blog-cover-image">
+      <img src="{{ blog.imgUrl }}" alt="blog-img" />
+    </div>
+    <p class="blog-desc">
+      {{ blog.desc }}
+    </p>
+   
+    <div class="container delete-post center justify-content-end center">
+      <!--for delete-->  
+        <button type="button" class="btn btn-danger" (click)="deleteBlog(this.blog)">
+          Delete blog
+        </button>
+    </div>
+    
+</div>
