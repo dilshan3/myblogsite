@@ -8,6 +8,7 @@ import { BlogComponent } from './blogs/blog/blog.component';
 import { HeaderComponent } from './common/header/header.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { ViewBlogComponent } from './view-blog/view-blog.component';
+import { StarComponent } from './star/star.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { ViewBlogComponent } from './view-blog/view-blog.component';
     BlogComponent,
     HeaderComponent,
     CreateBlogComponent,
-    ViewBlogComponent
+    ViewBlogComponent,
+    StarComponent,
+
   ],
   imports: [
     BrowserModule,

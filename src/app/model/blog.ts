@@ -4,5 +4,5 @@ export interface Blog{
     date: Date,
     imgUrl: string,
     desc: string,
-    rating: number
+    rating: number //added rating property to add star rating functionality
 }

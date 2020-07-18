@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogService} from '../services/blog.service'
+import { StarService } from '../services/star.service';
 
 
 @Component({
@@ -10,14 +11,11 @@ import {BlogService} from '../services/blog.service'
 export class BlogsComponent implements OnInit {
 
   blogs=null;
- 
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private starService: StarService) { }
 
   ngOnInit(): void {
 
     this.blogs = this.blogService.blogs;
-
-  }  
-
+  }
 }
