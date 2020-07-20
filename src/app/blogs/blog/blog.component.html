@@ -1,9 +1,9 @@
 <div class="blog-card" ng-app='app'>
     <h5 class="blog-title">
-      {{ this.blog.title }}
+      {{ blog.title }}
     </h5>
     <!-- To add ratings -->
-      <a *ngFor="let item of stars; let i=index " (click)="setStar(i, this.blog.rating, this.blog)">  
+      <a *ngFor="let item of stars; let i=index " (click)="setStar(i, blog.rating, blog)">  
         <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
       </a>  
     <span> {{ blog.date | date}} </span>    
@@ -15,7 +15,7 @@
     </p> 
     <div class="container delete-post center justify-content-end center">
       <!--for delete-->  
-        <button type="button" class="btn btn-danger" (click)="deleteBlog(this.blog)">
+        <button type="button" class="btn btn-danger" (click)="deleteBlog(blog)">
           Delete blog
         </button>
     </div>

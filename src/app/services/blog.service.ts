@@ -44,25 +44,28 @@ export class BlogService {
    
     const index: number= this.blogs.indexOf(blog);
     this.blogs.splice(index,1);
+  
   }
 
   //for setting rating in blog array
   setRating(data: any, blog: Blog){
 
     const index: number = this.blogs.indexOf(blog);
-    // console.log(index, blog);
 
     //for setting rating 0 if the same rating
     // if the already selected rating is selected again
     if(this.blogs[index].rating == data + 1){
+
       this.blogs[index].rating = 0;  
+
     }
     else{
-    this.blogs[index].rating = data + 1;
+    
+      this.blogs[index].rating = data + 1;
+
     }
-    console.log(this.blogs[index]);
+
   }
 
-  
   constructor() { }
 }

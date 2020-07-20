@@ -19,7 +19,9 @@ export class BlogComponent implements OnInit {
   constructor(private blogService: BlogService, private starService: StarService) { }
 
   ngOnInit(): void {
+
     this.stars = this.starService.starList;
+  
   }
 
   //for delete
