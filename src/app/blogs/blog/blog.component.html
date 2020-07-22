@@ -2,10 +2,9 @@
     <h5 class="blog-title">
       {{ blog.title }}
     </h5>
-    <!-- To add ratings -->
-      <a *ngFor="let item of stars; let i=index " (click)="setStar(i, blog.rating, blog)">  
+      <a *ngFor="let item of  blog.starList let i=index " (click)="setRating(i)">  
         <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
-      </a>  
+      </a>
     <span> {{ blog.date | date}} </span>    
     <div class="blog-cover-image">
       <img src="{{ blog.imgUrl }}" alt="blog-img" />

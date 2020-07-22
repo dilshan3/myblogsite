@@ -5,4 +5,6 @@ export interface Blog{
     imgUrl: string,
     desc: string,
     rating: number //added rating property to add star rating functionality
+    starList ?: Boolean[]
+
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {BlogService} from '../../services/blog.service';
 import {Blog} from '../../model/blog'
-import {StarService} from '../../services/star.service';
 
 @Component({
   selector: 'app-blog',
@@ -16,11 +15,11 @@ export class BlogComponent implements OnInit {
   records = null;
   stars = null;
 
-  constructor(private blogService: BlogService, private starService: StarService) { }
+  constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
 
-    this.stars = this.starService.starList;
+    this.blog.starList = [true, true, true, true, true];
   
   }
 
@@ -31,12 +30,40 @@ export class BlogComponent implements OnInit {
 
   }
 
-  //for calling setRating method in blogservice and setStar method in starservice
-  setStar(data: any, rating: number, blog:Blog, record: any){
+  //for setting star rating
+  setRating(index: number){
+    if(index > 4) {
+      return;
+    }
 
-    const r: number = blog.rating;
-    this.starService.setStar(data, rating);
-    this.blogService.setRating(data, blog);
+    if(this.blog.rating === index + 1){
+
+      this.blog.rating = 0;
+ 
+      for(let i = 0; i <= 4; i++){
+  
+        this.blog.starList[i]=true;
+        
+      }
+
+    }
+    else{
+
+      this.blog.rating = index + 1;
+
+      for(let i=0;i<=4;i++){  
+
+        if(i<=index){  
+  
+          this.blog.starList[i]=false;  
+  
+        }  
+        else{  
+  
+          this.blog.starList[i]=true;  
+  
+        }  
+      }
+    }
   }
-
 }
