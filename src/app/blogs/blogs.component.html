@@ -4,7 +4,10 @@
     </button>
 </div>
 <div class='blog-post'>
-  <app-blog *ngFor="let blog of blogs" [blog]="blog">
-   
-  </app-blog>
+  
+    <app-blog *ngFor="let blog of blogs" [blog]="blog"></app-blog>
+    
+  <ng-template emtBlog>
+    <p>No blogs to view</p>
+  </ng-template>
 </div>

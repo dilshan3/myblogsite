@@ -2,9 +2,7 @@
     <h5 class="blog-title">
       {{ blog.title }}
     </h5>
-      <a *ngFor="let item of  blog.starList let i=index " (click)="setRating(i)">  
-        <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
-      </a>
+
     <span> {{ blog.date | date}} </span>    
     <div class="blog-cover-image">
       <img src="{{ blog.imgUrl }}" alt="blog-img" />
@@ -14,9 +12,13 @@
     </p> 
     <div class="container delete-post center justify-content-end center">
       <!--for delete-->  
-        <button type="button" class="btn btn-danger" (click)="deleteBlog(blog)">
+        <button type="button" class="btn btn-outline-danger btn-del" (click)="deleteBlog(blog)">
           Delete blog
         </button>
     </div>
-    
+    <p>Rating: 
+      <a *ngFor="let item of  blog.starList let i=index " (click)="setRating(i)">  
+        <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
+      </a>
+    </p>
 </div>
