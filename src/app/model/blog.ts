@@ -3,7 +3,7 @@ export interface Blog{
     title: string,
     date: Date,
     imgUrl: string,
-    desc: string,
+    description: string,
     rating: number //added rating property to add star rating functionality
     starList ?: Boolean[]
 

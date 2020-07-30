@@ -8,16 +8,17 @@
       <img src="{{ blog.imgUrl }}" alt="blog-img" />
     </div>
     <p class="blog-desc">
-       {{ blog.desc }}
+       {{ blog.description }}
     </p> 
     <div class="container delete-post center justify-content-end center">
       <!--for delete-->  
-        <button type="button" class="btn btn-outline-danger btn-del" (click)="deleteBlog(blog)">
+        <button type="button" class="btn btn-outline-danger btn-del" 
+        (click)="deleteBlog(blog);$event.stopPropagation()">
           Delete blog
         </button>
     </div>
     <p>Rating: 
-      <a *ngFor="let item of  blog.starList let i=index " (click)="setRating(i)">  
+      <a *ngFor="let item of  blog.starList let i=index " (click)="setRating(i);$event.stopPropagation()">  
         <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>   
       </a>
     </p>

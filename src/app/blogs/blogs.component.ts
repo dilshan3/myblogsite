@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BlogService} from '../services/blog.service'
+import {BlogService} from '../services/blog.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -9,12 +10,25 @@ import {BlogService} from '../services/blog.service'
 })
 export class BlogsComponent implements OnInit {
 
-  blogs=null;
+  // blogs=null;
 
-  constructor(private blogService: BlogService) { }
+  constructor(public blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.blogs = this.blogService.blogs;
+    // this.blogs = this.blogService.blogs;
+
+  }
+
+  onClickBlog(id: number){
+
+    this.router.navigate(['/view-blog', id]);
+
+  }
+
+  onClickCreate(){
+
+    this.router.navigate(['/create-blog']);
+
   }
 }

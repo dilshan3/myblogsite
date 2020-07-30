@@ -1,13 +1,13 @@
 <div class="container write-post d-flex justify-content-end">
-    <button type="button" class="btn btn-outline-dark">
+    <button type="button" class="btn btn-outline-dark" (click)="onClickCreate()">
       Write a blog
     </button>
 </div>
 <div class='blog-post'>
-  
-    <app-blog *ngFor="let blog of blogs" [blog]="blog"></app-blog>
-    
-  <ng-template emtBlog>
+  <ng-container *ngIf="blogService.blogs.length > 0; else emtBlog">
+    <app-blog *ngFor="let blog of blogService.blogs" [blog]="blog" (click)="onClickBlog(blog.id)"></app-blog>
+  </ng-container>
+  <ng-template #emtBlog>
     <p>No blogs to view</p>
   </ng-template>
 </div>

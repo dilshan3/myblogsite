@@ -8,6 +8,9 @@ import { BlogComponent } from './blogs/blog/blog.component';
 import { HeaderComponent } from './common/header/header.component';
 import { CreateBlogComponent } from './create-blog/create-blog.component';
 import { ViewBlogComponent } from './view-blog/view-blog.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,13 @@ import { ViewBlogComponent } from './view-blog/view-blog.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([{path: 'create-blog', component: CreateBlogComponent},
+    {path: '', component: BlogsComponent},
+    {path: 'view-blog/:id', component: ViewBlogComponent}])
+    //AppRoutingModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

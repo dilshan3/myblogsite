@@ -11,15 +11,30 @@ export class BlogComponent implements OnInit {
 
   @Input() blog;
 
-  
-  records = null;
-  stars = null;
-
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
 
+    //to initialize rating star list
     this.blog.starList = [true, true, true, true, true];
+
+    //to set stars for already rated blogs
+    if(this.blog.rating > 0){
+
+      for(let i=0;i<=4;i++){  
+
+        if(i<=this.blog.rating){  
+  
+          this.blog.starList[i]=false;  
+  
+        }  
+        else{  
+  
+          this.blog.starList[i]=true;  
+  
+        }  
+      }
+    }
   
   }
 
@@ -32,6 +47,7 @@ export class BlogComponent implements OnInit {
 
   //for setting star rating
   setRating(index: number){
+
     if(index > 4) {
       return;
     }
@@ -50,7 +66,6 @@ export class BlogComponent implements OnInit {
     else{
 
       this.blog.rating = index + 1;
-
       for(let i=0;i<=4;i++){  
 
         if(i<=index){  
