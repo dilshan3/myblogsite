@@ -19,17 +19,18 @@ import {HttpClientModule} from '@angular/common/http';
     BlogComponent,
     HeaderComponent,
     CreateBlogComponent,
-    ViewBlogComponent,
+    ViewBlogComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([{path: 'create-blog', component: CreateBlogComponent},
-    {path: '', component: BlogsComponent},
-    {path: 'view-blog/:id', component: ViewBlogComponent}])
-    //AppRoutingModule, 
+    // RouterModule.forRoot([{path: 'create-blog', component: CreateBlogComponent},
+    // {path: '', component: BlogsComponent},
+    // {path: 'view-blog/:id', component: ViewBlogComponent},
+    // {path: 'create-blog/:id', component: CreateBlogComponent}])
+    AppRoutingModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

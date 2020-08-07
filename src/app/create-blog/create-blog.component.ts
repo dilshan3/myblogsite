@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { BlogService } from '../services/blog.service';
-import { Router } from '@angular/router';
+import { Blog } from '../model/blog';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-blog',
@@ -20,20 +21,48 @@ export class CreateBlogComponent implements OnInit {
   
   })
 
-  constructor(private blogService: BlogService, private router: Router) {}
+  public editId: number = null;
+  public desc: String = null;
+  public titleOld: String = null;
+  public url: String = null;
+
+  constructor(public blogService: BlogService, private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
+
+    this.editId= +this.activatedRoute.snapshot.paramMap.get('id');
+   
+    if(this.editId > 0){
+
+      let blog: Blog = this.blogService.blogs.find(b => b.id === this.editId);
+
+      this.desc = blog.description;
+      this.url = blog.imgUrl;
+      this.titleOld = blog.title; 
+      
+      this.blogForm.controls.description.setValue(this.desc);
+      this.blogForm.controls.imgUrl.setValue(this.url);
+      this.blogForm.controls.title.setValue(this.titleOld); 
+    }
+
   }
 
   onFormSubmit(){
     
-    if(this.blogForm.valid){
+    if(this.blogForm.valid && this.editId === 0){
 
       this.blogForm.controls.id.setValue(this.getId() + 1);
       this.blogForm.controls.date.setValue(new Date);
       this.blogService.addBlog(this.blogForm.value);
       this.router.navigate(['']);
 
+    }
+    else{
+
+      this.blogForm.controls.id.setValue(this.editId);
+      this.blogForm.controls.date.setValue(new Date);
+      this.blogService.editBlog(this.blogForm.value, this.editId);
+      this.router.navigate(['']);
     }
 
   }

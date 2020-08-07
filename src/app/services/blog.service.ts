@@ -55,11 +55,27 @@ export class BlogService {
   
   }
 
-  //for add blogs
+  //for adding blogs
   addBlog(blog:Blog){
 
     this.blogs.push(blog);
 
+  }
+
+  //for editing blogs
+  editBlog(blog:Blog, id: number){
+
+    const index = this.blogs.findIndex((b => b.id === id));
+    let newBlog : Blog = this.blogs[index];
+    
+    newBlog.id = id;
+    newBlog.date = blog.date;
+    newBlog.description = blog.description;
+    newBlog.title = blog.title;
+    newBlog.imgUrl = blog.imgUrl;
+    newBlog.rating = this.blogs[index].rating;
+    
+    this.blogs[index]= newBlog;
   }
   
   //for getting blog data from mock api
