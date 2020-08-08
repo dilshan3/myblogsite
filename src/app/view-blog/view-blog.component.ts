@@ -24,17 +24,15 @@ export class ViewBlogComponent implements OnInit {
     //to get id of blog to display from route
 
     this.id = +this.activatedRoute.snapshot.paramMap.get('id');
-   
-    // this.currentBlog = this.blogService.blogs.find(blog => blog.id === this.id);
 
-    this.array = this.blogService.blogs;
+    //this.array = this.blogService.blogs;
 
-    // this.http.get('https://run.mocky.io/v3/40d1dd50-1cc9-42b0-afdd-0d75c7186fe3').
-    // pipe(catchError(this.handleError)).subscribe((val: Blog[]) => {
+    this.http.get('https://run.mocky.io/v3/40d1dd50-1cc9-42b0-afdd-0d75c7186fe3').
+    pipe(catchError(this.handleError)).subscribe((val: Blog[]) => {
     
-    //   this.array = val;
+      this.array = val;
 
-    // });
+    });
   
   }
 
@@ -42,10 +40,11 @@ export class ViewBlogComponent implements OnInit {
 
     if(this.array.length === 0)
       return null;
-    
+      
     else
       return this.array.find(blog => blog.id === this.id);
-  }
+      
+  }  
 
   private handleError(error: Response | any) {
   
